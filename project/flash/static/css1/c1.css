@@ -1,0 +1,127 @@
+.t1{
+    font-size: 50px;
+}
+.i1{
+    color:gold;
+    font-size: 70px;
+}
+.i2{
+    color:gold;
+    font-size: 25px;
+}
+.i3{
+    color: gold;
+}
+.cu1{
+    border-radius: 18px;
+}
+.z1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.logo1{
+        color:white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+}
+.logo1:hover{
+    color:rgb(243, 18, 18) !important;
+}
+.bg-hover-red {
+    color:white !important;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.bg-hover-red:hover {
+    background-color: black;
+}
+.bg1{
+    background-color: gold;
+}
+.h1{
+    height:480px;
+    width:200px;
+}
+.im1{
+    height:350px;
+    width:350px;
+    transition: transform 0.3s ease;
+    justify-content: center;
+    border-radius: 20px;
+}
+.im1:hover{
+    transform:scale(1.1);
+}
+.img-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.img-text {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color:white;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 30px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.im2{
+height:220px;
+width:200px;
+transition: transform 0.3s ease;
+
+}
+.im2:hover{
+transform:scale(1.1);
+}
+.tight-cols .col-4 {
+padding-left: 10px;
+padding-right: 10px;
+}
+.i10{
+height:300px;
+transition: transform 0.3s ease;
+}
+.i10:hover{
+transform:scale(1.1);
+}
+.t10{
+color:gold;
+}
+.carousel-container {
+overflow-x: auto;
+overflow-y: hidden;
+-webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+}
+.carousel {
+display: flex;
+gap: 20px; /* spacing between items */
+padding: 0;
+margin: 0;
+}
+.item {
+flex: 0 0 auto;
+}
+.im3{
+height:600px;
+transition: transform 0.3s ease;
+}
+.im3:hover{
+transform:scale(1.1);
+}
+.t11{
+font-family: 'Times New Roman', Times, serif;
+font-size: 50px;
+}
+
+.a{
+    text-decoration: none;
+}
+.red{
+    color: red !important;
+}

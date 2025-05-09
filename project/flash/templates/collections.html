@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>category</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css1/c1.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .z1{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .logo1{
+            color:white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }   
+        .logo1:hover{
+            color:rgb(243, 18, 18) !important;
+        }
+        .bg-hover-red {
+            color:white !important;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .bg-hover-red:hover {
+            background-color: black;
+        }
+        .bg1{
+            background-color: gold;
+        }
+        .h1{
+            height:480px;
+            width:200px;
+        }
+        .im1{
+            height:350px;
+            width:300px;
+            transition: transform 0.3s ease;
+            justify-content: center;
+            border-radius: 20px;
+        }
+        .im1:hover{
+            transform:scale(1.1);
+        }
+        .img-container {
+            position: relative;
+        }
+        .img-text {
+            position: absolute;
+            color:white;
+            font-size: 30px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .im2{
+            height:220px;
+            width:200px;
+            transition: transform 0.3s ease;
+        }
+        .im2:hover{
+            transform:scale(1.1);
+        }
+        .i10{
+            height:300px;
+            transition: transform 0.3s ease;
+        }
+        .i10:hover{
+            transform:scale(1.1);
+        }
+        .t10{
+            color:gold;
+        }
+        .carousel-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+        }
+        .carousel {
+            display: flex;
+            gap: 20px; /* spacing between items */
+            padding: 0;
+            margin: 0;
+        }
+        .item {
+            flex: 0 0 auto;
+        }
+        .im3{
+            height:600px;
+            transition: transform 0.3s ease;
+        }
+        .im3:hover{
+            transform:scale(1.1);
+        }
+        .t11{
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 50px;
+        }
+        .justify{
+            justify-content: center;
+        }
+        .cursor{
+            cursor: pointer;
+        }
+        .zoom-container1{
+                position: relative;
+                overflow:hidden;
+                border-radius: 15px;
+        }
+        .zoom-image1{
+            transition: transform 0.3s ease;
+            display:block;
+            height:520px;
+        }
+        .zoom-container1:hover .zoom-image1{
+            transform:scale(1.1);
+        }
+        .bold{
+            font-weight: bold;
+        }
+        .i1{
+            font-size: 70px;
+            color: gold;
+        }
+        .gold{
+            color:gold;
+        }
+        .impact{
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        .center{
+            justify-content: center;
+        }
+        .bg-gold{
+            background-color: gold;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        .a{
+            text-decoration: none;
+        }
+        .height1{
+            height:390px;
+            width:355px;
+        }
+        .height2{
+            height:420px;
+            width:481px;
+        }
+        /* category card*/
+        .card {
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+                
+        .card .card-title {
+            transition: color 0.3s ease;
+        }
+                
+        .card:hover .card-title {
+            color: #FFD700; /* gold */
+        }
+        .anone{
+            text-decoration: none;
+        }
+        .red{
+            color:red;
+        }
+</style>
+</head>
+<body>
+    {% csrf_token %}
+    <nav class="navbar navbar-expand-lg bg-black">
+        <div class="container-fluid">
+            <a class="t1 ms-2 me-5  navbar-brand logo1 " href="{% url 'home' %}" style="font-family: fantasy;">Flash<i class="fa-solid  fa-bolt  i1  "></i></a>
+            <form class="d-flex flex-grow-1 ms-" method="get" action="{% url 'search' %}">
+                <input name="query" class="form-control w-100 p-2 fs-5 cu1" type="text" placeholder="What are you looking for?">
+                <button class="btn btn-black i2 " type="submit"><i class="fa-brands fa-searchengin i2 fs-1"></i></button>
+            </form>
+            <div class="navbar-nav">
+                <a class="nav-link active  fs-3 bold  ms-4 verdana  logo1 text-white" href="{% url 'category_products_men'   %}">Men</a>
+                <a class="nav-link active fs-3 bold ms-2 verdana logo1 text-white "   href="{% url 'category_products_women' %}">Women</a>
+                <a class="nav-link active fs-3 bold ms-2 verdana logo1 text-white "  href="{% url 'category_products_kid' %}">Kids</a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end ">
+                <ul class="navbar-nav  ">
+                    <li class="nav-item ms-1 ">
+                        <a class="nav-link active fs-5 text-white me-2 verdana bold logo1 " href="{% url 'home' %}" ><i class="fa fa-solid fa-home i3"></i> Home</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item ms-1 d-flex">
+                        <a class="nav-link active text-white fs-5 me-2  verdana bold logo1" href="#"><i class="fa-solid fa-right-to-bracket gold"></i> {{request.user}}</a>
+                        <a class="nav-link active text-white fs-5 me-2 verdana bold logo1" href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket gold"></i> Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item ms-1 d-flex">
+                        <a class="nav-link active text-white fs-5 me-2 verdana bold logo1" href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket gold"></i> Login</a>
+                        <a class="nav-link active text-white fs-5 me-2 verdana bold logo1" href="{% url 'register' %}"><i class="fa-solid fa-user-secret i3 "></i> Register</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item ms-1">
+                        <a class="nav-link active text-white fs-5 me-3 z1 verdana bold logo1 " href="{% url 'cart' %}"><i class="fa-solid fa-cart-shopping i3"></i> Cart</a>
+                    </li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand navbar-white sticky-top bg1">
+        <div class="container-fluid">
+        <div class="collapse navbar-collapse justify-content-center">
+            <ul class="navbar-nav"> 
+
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red z1" href="{% url 'collections' %}">
+                        <i class="fa-solid fa-layer-group fs-3"></i> Collections
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red  z1" href="{% url 'arrival' %}"><i class="fa-solid fa-plane-arrival fs-3 "></i>New Arrivals!</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red z1" href="{% url 'favviewpage' %}"><i class="fa-solid fa-heart-circle-bolt fs-3 red"></i> Favourite</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red z1" href="{% url 'bestseller' %}"><i class="fa-solid fa-wand-magic fs-3 "></i> Best Sellers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red z1" href="{% url 'upcoming' %}"><i class="fa-solid fa-hand-holding-heart fs-3 "></i> Upcomings</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    </nav>
+
+        {% include 'shop/inc/message.html' %}
+
+    
+
+<div class="container bg-black mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center mt-5 ">
+            <h1 class="impact gold mb-5">Best sellers</h1>
+            <p class="impact text-white fs-5">Our Most Popular Products Based on Sales  <i class="fa-solid fa-clock gold"></i> Updated Hourly</p>
+            <div class="d-flex center mb-5">
+                <button type="button" class=" btn btn-warning text-black me-4   impact" >Already a user?</button>
+                <a href="{% url 'login' %}">
+                <button type="button" class=" btn btn-warning text-black  impact " >Login</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mb-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-black text-center impact mt-5 mb-3 fs-">Categories</h1>
+            {% include 'shop/inc/message.html' %}
+        </div>
+    </div>
+    <div class="row">
+        {% for item in categories|slice:":4" %}
+        <div class="col-md-3">
+            <a href="{% url 'collections_view' item.slug %}" class="a">
+            <div class="card my-3">
+                <img src="{{ item.image.url }}" class="card-img-top height1 img-fluid" alt="categories">
+                <div class="card-body">
+                    <h1 class="impact card-title gold">{{ item.name }}</h1>
+                    <p class="card-text z1 text-black">{{ item.description }}</p>
+                </div>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        {% for item in categories|slice:"4:7" %}
+        <div class="col-md-4">
+            <a href="{% url 'collections_view' item.slug %}" class="a">
+            <div class="card my-3">
+                <img src="{{ item.image.url }}" class="card-img-top height2 img-fluid" alt="categories">
+                <div class="card-body">
+                    <h1 class="impact card-title gold">{{ item.name }}</h1>
+                    <p class="card-text z1 text-black">{{ item.description }}</p>
+                </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+<div class="container-fluid  mt-5">
+    <a class="row bg-secondary text-center anone" href="#top">
+        <div  class="col w-100 ">
+            <p class=" fs-4 text-white mb-2 mt-2 bold" >Back to Top</p>
+        </div>
+    </a>
+    <div class="row bg-black ">
+      <div class="col-3">
+          <div class=" t10 float-end mt-5 z1">
+              <p class="fs-3 mb-5 bold">Get to know us</p>
+              <p>About Flash</p>
+              <p>careers</p>
+              <p>Press releases</p>
+              <p>Flash science</p>
+          </div>
+      </div>
+      <div class="col-3">
+          <div class=" t10 text-center mt-5 z1">
+              <p class="fs-3 mb-5 bold ">Connect with us</p>
+              <p><i class="fa-brands fa-square-facebook" href="#"></i> Facebook</p>
+              <p><i class="fa-brands fa-twitter"></i> Twitter</p>
+              <p><i class="fa-brands fa-instagram"></i> Instagram</p>
+          </div>
+      </div>
+      <div class="col-3">
+          <div class=" t10 mt-5 z1">
+              <p class="fs-3 mb-5 bold ">Make Money with us</p>
+              <p>Sell on flash</p>
+              <p>Protect and build your brand</p>
+              <p>Amazon global selling</p>
+              <p>Supply to flash</p>
+              <p>let us help you</p>
+          </div>
+      </div>
+      <div class="col-3">
+          <div class=" t10 float-start mt-5 z1">
+              <p class="fs-3 mb-5 bold">Let help you</p>
+              <p>Your account</p>
+              <p>Returns centre</p>
+              <p>Recalls and product safety</p>
+              <p>help</p>
+          </div>
+      </div>
+      <div class="row  mt-5 text-center  mb-5">
+        <a class="t1   logo1 " href="{% url 'home' %}" style="font-family: fantasy;">Flash<i class="fa-solid  fa-bolt  i1 t "></i></a>
+        <p class="t10 mt-2 bold">Copyrights@2025</p>
+      </div>
+     
+
+  </div>
+  </div>
+
+
+
+
+
+</body>
+</html>
+
+
+
+

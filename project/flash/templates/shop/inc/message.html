@@ -1,0 +1,13 @@
+
+<style>
+    .impact{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+</style>
+
+{% for msg in messages%}
+<div class="alert alert-info alert-dismissable fade show impact" role="alert">
+    {{msg}}
+    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor  %}

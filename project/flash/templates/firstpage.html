@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css1/c1.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .z1{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .logo1{
+                color:white;
+                text-decoration: none;
+                transition: color 0.3s ease;
+        }
+        .logo1:hover{
+            color:rgb(243, 18, 18) !important;
+        }
+        .bg-hover-red {
+            color:white !important;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .bg-hover-red:hover {
+            background-color: black;
+        }
+        .bg1{
+            background-color: gold;
+        }
+        .h1{
+            height:480px;
+            width:200px;
+        }
+        .im1{
+            height:350px;
+            width:300px;
+            transition: transform 0.3s ease;
+            justify-content: center;
+            border-radius: 20px;
+    }
+    .im1:hover{
+            transform:scale(1.1);
+        }
+    .img-container {
+            position: relative;
+    }
+    .img-text {
+            position: absolute;
+            color:white;
+            font-size: 30px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .im2{
+        height:220px;
+        width:200px;
+        transition: transform 0.3s ease;
+    
+    }
+    .im2:hover{
+        transform:scale(1.1);
+    }
+    .i10{
+        height:300px;
+        transition: transform 0.3s ease;
+    }
+    .i10:hover{
+        transform:scale(1.1);
+    }
+    .t10{
+        color:gold;
+    }
+    .carousel-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    }
+    .carousel {
+    display: flex;
+    gap: 20px; /* spacing between items */
+    padding: 0;
+    margin: 0;
+    }
+    .item {
+        flex: 0 0 auto;
+    }
+    .im3{
+        height:600px;
+        transition: transform 0.3s ease;
+    }
+    .im3:hover{
+        transform:scale(1.1);
+    }
+    .t11{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 50px;
+    }
+    .justify{
+        justify-content: center;
+    }
+    .cursor{
+        cursor: pointer;
+    }
+    .zoom-container1{
+            position: relative;
+            overflow:hidden;
+            border-radius: 15px;
+    }
+    .zoom-image1{
+        transition: transform 0.3s ease;
+        display:block;
+        height:520px;
+    }
+    .zoom-container1:hover .zoom-image1{
+        transform:scale(1.1);
+    }
+    .gold{
+        color: gold;
+    }
+    .bold{
+        font-weight: bold;
+    }
+    .anone{
+        text-decoration: none;
+    }
+    .html{
+        scroll-behavior: smooth;
+    }
+    .menheight{
+            height:450px;
+    }
+    .card{
+        height:560px;
+        width:360px;
+    }
+    .impact{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    .verdana{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .red{
+        color: red;
+    }
+</style>
+</head>
+<body id="top">
+    {% csrf_token %}
+    <nav class="navbar navbar-expand-lg bg-black">
+        <div class="container-fluid">
+            <a class="t1 ms-2 me-5  navbar-brand logo1 " href="{% url 'home' %}" style="font-family: fantasy;">Flash<i class="fa-solid  fa-bolt  i1  "></i></a>
+            <form class="d-flex flex-grow-1 ms-" method="get" action="{% url 'search' %}">
+                <input name="query" class="form-control w-100 p-2 fs-5 cu1" type="text" placeholder="What are you looking for?">
+                <button class="btn btn-black i2 " type="submit"><i class="fa-brands fa-searchengin i2 fs-1"></i></button>
+            </form>
+            <div class="navbar-nav">
+                <a class="nav-link active  fs-3 bold  ms-4 verdana  logo1 text-white" href="{% url 'category_products_men'   %}">Men</a>
+                <a class="nav-link active fs-3 bold ms-2 verdana logo1 text-white "   href="{% url 'category_products_women' %}">Women</a>
+                <a class="nav-link active fs-3 bold ms-2 verdana logo1 text-white "  href="{% url 'category_products_kid' %}">Kids</a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end ">
+                <ul class="navbar-nav  ">
+                    <li class="nav-item ms-1 ">
+                        <a class="nav-link active fs-5 text-white me-2 verdana bold logo1 " href="{% url 'home' %}" ><i class="fa fa-solid fa-home i3"></i> Home</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item ms-1 d-flex">
+                        <a class="nav-link active text-white fs-5 me-2  verdana bold logo1" href="#"><i class="fa-solid fa-right-to-bracket gold"></i> {{request.user}}</a>
+                        <a class="nav-link active text-white fs-5 me-2 verdana bold logo1" href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket gold"></i> Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item ms-1 d-flex">
+                        <a class="nav-link active text-white fs-5 me-2 verdana bold logo1" href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket gold"></i> Login</a>
+                        <a class="nav-link active text-white fs-5 me-2 verdana bold logo1" href="{% url 'register' %}"><i class="fa-solid fa-user-secret i3 "></i> Register</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item ms-1">
+                        <a class="nav-link active text-white fs-5 me-3 z1 verdana bold logo1 " href="{% url 'cart' %}"><i class="fa-solid fa-cart-shopping i3"></i> Cart</a>
+                    </li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand navbar-white sticky-top bg1">
+        <div class="container-fluid">
+        <div class="collapse navbar-collapse justify-content-center">
+            <ul class="navbar-nav"> 
+
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red z1" href="{% url 'collections' %}">
+                        <i class="fa-solid fa-layer-group fs-3"></i> Collections
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red  z1" href="{% url 'arrival' %}"><i class="fa-solid fa-plane-arrival fs-3 "></i>New Arrivals!</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red z1" href="{% url 'favviewpage' %}"><i class="fa-solid fa-heart-circle-bolt fs-3 red"></i> Favourite</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red z1" href="{% url 'bestseller' %}"><i class="fa-solid fa-wand-magic fs-3 "></i> Best Sellers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-black fs-5 me-4 bg-hover-red z1" href="{% url 'upcoming' %}"><i class="fa-solid fa-hand-holding-heart fs-3 "></i> Upcomings</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    </nav>
+
+    {% include 'shop/inc/message.html' %}
+
+
+    <div class="container-fluid">
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+          </div>
+      
+        
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+            <a href="{% url 'product_details' 'men' 'japanese-fusion-deep-black' %}" class="a">
+              <img src="{% static 'images/home1.webp' %}"  class="d-block w-100 h1 " alt="Slide 1">
+            </a>
+            </div>
+            <div class="carousel-item">
+            <a href="{% url 'product_details' 'women' 'cutees-tshirt' %}" class="a">
+              <img src="{% static 'images/women2.webp' %}" class="d-block w-100 h1" alt="Slide 2">
+            </a>
+            </div>
+            <div class="carousel-item">
+            <a href="{% url 'product_details' 'men' 'avatar-last-airbender-shirt' %}">
+                <img src="{% static 'images/home2.webp' %}" class="d-block w-100 h1" alt="Slide 3">
+            </a>
+            </div>
+            <div class="carousel-item">
+            <a href="{% url 'product_details' 'women' 'cutie-joggers' %}">
+                <img src="{% static 'images/women4.webp' %}" class="d-block w-100 h1" alt="Slide 3">
+            </a>
+            </div>
+          </div>
+      
+          <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+
+      
+      <div class="container-fluid">
+        <div class="text-center z1  mt-5  display-md-1 display-3 mb-3 t10">Cotton Linen shirts</div>
+        <div class="row  mb-3 justify">
+            <div class="col-3  cursor">
+                <div class="img-container">
+                <a href="{% url 'product_details' 'men' 'mint-green-shirt' %}">
+                    <img src="{% static 'images/cotton1.webp' %}" class="im1 " alt="shirt1">
+                    <div class="img-text">Mint Green Shirt</div>
+                </a>
+                </div>
+            </div>
+            <div class="col-3 cursor">
+                    <div class="img-container">
+                    <a href="{% url 'product_details' 'men' 'maroon-shirt' %}">
+                        <img src="{% static 'images/cotton21.jpg' %}" class="im1 " alt="shirt2">
+                        <div class="img-text">Maroon Shirt</div>
+                    </a>
+                    </div>
+            </div>
+            <div class="col-3 cursor">
+                    <div class="img-container">
+                    <a href="{% url 'product_details' 'men' 'light-yellow-shirt' %}">
+                        <img src="{% static 'images/cotton31.jpg' %}" class="im1 " alt="shirt3">
+                        <div class="img-text">light yellow Shirt</div>
+                    </a>
+                    </div>
+            </div>
+        </div>
+            <div class="row justify">
+            <div class="col-3 cursor">
+                <div class="img-container">
+                <a href="{% url 'product_details' 'men' 'royal-blue-shirt' %}">
+                    <img src="{% static 'images/cotton4.webp' %}" class="im1 " alt="shirt4">
+                    <div class="img-text text-start">royal blue Shirt</div>
+                </a>
+                </div>
+            </div>
+            <div class="col-3 cursor">
+                <div class="img-container">
+                <a href="{% url 'product_details' 'men' 'grey-shirt' %}">
+                    <img src="{% static 'images/image7.webp' %}" class="im1 " alt="shirt5">
+                    <div class="img-text">Grey Shirt</div>
+                </a>
+                </div>
+            </div>
+            <div class="col-3 cursor">
+                <div class="img-container">
+                <a href="{% url 'product_details' 'men' 'pale-pink-shirt' %}">
+                    <img src="{% static 'images/cotton6.jpg' %}" class="im1 " alt="shirt6">
+                    <div class="img-text">pale pink Shirt</div>
+                </a>
+                </div>
+            </div>
+    </div>
+</div>
+
+    <div class="container-fluid t10 mt-5">
+        <h1 class="z1 display-md-1 display-3 text-center mt-5 mb-3">Accesories</h1>
+        <div class="row">
+            <div class="col-2 ">
+            <a href="{% url 'product_details' 'accesories' 'captain-america-keychain' %}">
+                <img src="{% static 'images/a1.webp' %}" class="im2" alt="accessories1">
+            </a>
+            </div>
+            <div class="col-2 ">
+            <a href="{% url 'product_details' 'accesories' 'black-rider-mask' %}">
+                <img src="{% static 'images/a11.jpg' %}" class="im2" alt="accessories2" >
+            </a>
+            </div>
+            <div class="col-2 ">
+            <a href="{% url 'product_details' 'accesories' 'leaf-ring' %}">
+                <img src="{% static 'images/a12.jpg' %}" class="im2" alt="accessories3" >
+            </a>
+            </div>
+            <div class="col-2 ">
+            <a href="{% url 'product_details' 'accesories' 'desert-scarf' %}">
+                <img src="{% static 'images/a13.jpg' %}" class="im2" alt="accessories4" >
+            </a>
+            </div>
+            <div class="col-2 ">
+            <a href="{% url 'product_details' 'accesories' 'neon-green-helmet' %}">
+                <img src="{% static 'images/a14.jpg' %}" class="im2" alt="accessories5" >
+            </a>
+            </div>
+            <div class="col-2 ">
+            <a href="{% url 'product_details' 'accesories' 'spiderman-keychain' %}">
+                <img src="{% static 'images/a6.webp' %}" class="im2" alt="accessories6" >
+            </a>
+            </div>
+        </div>
+
+            <div class="row mt-5 mb-5 ">
+                <div class="col-2 ">
+                <a href="{% url 'product_details' 'accesories' 'floral-headwear' %}">
+                    <img src="{% static 'images/image10.webp' %}" class="im2" alt="accessories7" >
+                </a>
+                </div>
+                <div class="col-2 ">
+                <a href="{% url 'product_details' 'accesories' 'thunder-necklace' %}">
+                    <img src="{% static 'images/a15.jpg' %}" class="im2" alt="accessories8" >
+                </a>
+                </div>
+                <div class="col-2 ">
+                <a href="{% url 'product_details' 'accesories' 'blue-earrings' %}">
+                    <img src="{% static 'images/i1.jpeg' %}" class="im2" alt="accessories9">
+                </a>
+                </div>
+                <div class="col-2 ">
+                <a href="{% url 'product_details' 'accesories' 'black-frame-reader-glass' %}">
+                    <img src="{% static 'images/a16.jpg' %}" class="im2" alt="accessories10">
+                </a>
+                </div>
+                <div class="col-2 ">
+                <a href="{% url 'product_details' 'accesories' 'gold-ring' %}">
+                    <img src="{% static 'images/i3.webp' %}" class="im2" alt="accessories11">
+                </a>
+                </div>
+                <div class="col-2 ">
+                <a href="{% url 'product_details' 'accesories' 'baseball-bat' %}">
+                    <img src="{% static 'images/i4.jpeg' %}" class="im2" alt="accessories12">
+                </a>
+                </div>
+        </div>
+    </div>
+
+    <div class="mt-5 mb-5">
+    </div>
+
+    <div class="container-fluid bg-black text-center">
+        <div id="demo1" class="carousel slide" data-bs-ride="carousel">
+        
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo1" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo1" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo1" data-bs-slide-to="2"></button>
+          </div>
+          <div class="carousel-inner ">
+            <!--first-->
+            <div class="carousel-item mb-5 active ">
+                <h1 class="display-md-1 display-3 z1 t10 mt-5 mb-5">Sneakers</h1>
+                <div class="row ">
+                <div class="col-md-4 mb-3 ">
+                    <a href="{% url 'product_details' 'sneakers' 'tommy-sneakers' %}">
+                    <img src="{% static 'images/shoe1.jpg' %}"  class="img-fluid h1 w-75 i10" alt="sneaker1" >
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'product_details' 'sneakers' 'white-golden-strip-shoe' %}">
+                    <img src="{% static 'images/shoe2.jpg' %}"  class="img-fluid h1  w-75 i10  " alt="sneaker2">
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'product_details' 'sneakers' 'full-white-sneaker' %}">
+                    <img src="{% static 'images/shoe3.jpg' %}"  class="img-fluid h1  w-75 i10  " alt="sneaker3">
+                    </a>
+                </div>
+                </div>
+                <div class="row mt-5 ">
+                    <div class="col-md-4">
+                        <a href="{% url 'product_details' 'sneakers' 'red-air-sneaker' %}">
+                        <img src="{% static 'images/shoe4.jpg' %}"  class="img-fluid h1  w-75 i10  " alt="sneaker4">
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'product_details' 'sneakers' 'grey-shoe' %}">
+                        <img src="{% static 'images/shoe5.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="sneaker5">
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'product_details' 'sneakers' 'black-sneaker' %}">
+                        <img src="{% static 'images/shoe6.jpg' %}"  class="img-fluid h1  w-75 i10  " alt="sneaker6">
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            <!--second-->
+            <div class="carousel-item mb-5">
+                <h1 class="display-md-1 display-3 z1 t10 mt-5 mb-5">Watches</h1>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <a href="{% url 'product_details' 'gadgets' 'silver-metal-watch' %}">
+                        <img src="{% static 'images/watch1.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="watches1" >
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="{% url 'product_details' 'gadgets' 'matte-black-watch' %}">
+                        <img src="{% static 'images/watch2.jpg' %}"  class="img-fluid h1  w-75 i10  " alt="watches2">
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="{% url 'product_details' 'gadgets' 'black-metal-watch' %}">
+                        <img src="{% static 'images/watch3.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="watches3">
+                        </a>
+                    </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <a href="{% url 'product_details' 'gadgets' 'brown-leather-strap-watch' %}">
+                            <img src="{% static 'images/watch4.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="watches4">
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'product_details' 'gadgets' 'embossed-metal-watch' %}">
+                            <img src="{% static 'images/watch5.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="watches5">
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'product_details' 'gadgets' 'cadisen-watch' %}">
+                            <img src="{% static 'images/watch6.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="watches6">
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+            <!--third-->
+            <div class="carousel-item mb-5">
+                <h1 class="display-md-1 display-3 z1 t10 mt-5 mb-5">Cosmetics</h1>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <a href="{% url 'product_details' 'cosmetics' 'hydrating-face-serum' %}">
+                        <img src="{% static 'images/cosmetic11.jpg' %}"  class="img-fluid h1  w-75 i10" alt="cosmetic1" >
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="{% url 'product_details' 'cosmetics' 'makeup-remover-wipes' %}">
+                        <img src="{% static 'images/cosmetic22.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="cosmetic2">
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="{% url 'product_details' 'cosmetics' 'bb-cream-with-spf' %}">
+                        <img src="{% static 'images/cosmetic33.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="cosmetic3">
+                        </a>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                        <div class="col-md-4">
+                            <a href="{% url 'product_details' 'cosmetics' 'matte-liquid-lipstick' %}">
+                            <img src="{% static 'images/cosmetic44.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="cosmetic4" >
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'product_details' 'cosmetics' 'facewash-with-vitamin-c' %}">
+                            <img src="{% static 'images/cosmetic55.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="cosmetic5">
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'product_details' 'cosmetics' 'lip-balmstrawberry' %}">
+                            <img src="{% static 'images/cosmetic66.jpg' %}"  class="img-fluid h1  w-75 i10 " alt="cosmetic6">
+                            </a>
+                        </div>
+                </div>
+                </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#demo1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#demo1" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="z1 display-md-1 display-3 mt-5 mb-3 text-center">Gadjets</h1>
+    <div id="multiItemCarousel" class="carousel slide " data-bs-ride="carousel">
+    <div class="carousel-inner mb-5">
+
+    <!-- slide 1 -->
+    <div class="carousel-item active">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-md-4 cursor">
+                    <h1 class="t11 text-black text-center" >Gimbles</h1>
+                    <div class="zoom-container1">
+                        <a href="{% url 'product_details' 'gadgets' 'phone-gimble' %}">
+                        <img src="{% static 'videos/gadjet2.jpg'%}" alt="video1" class="img-fluid zoom-image1 w-100" >
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 cursor">
+                    <h1 class="t11 text-black text-center" >Smart Phones</h1>
+                    <div class="zoom-container1">
+                        <a href="{% url 'product_details' 'gadgets' 'samsung-galaxy-s25-ultra' %}">
+                        <img src="{% static 'videos/gadjet3.jpg'%}" alt="video2" class="img-fluid zoom-image1 w-100">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 cursor">
+                    <h1 class="t11 text-black text-center" >Ps Controllers</h1>
+                    <div class="zoom-container1">
+                        <a href="{% url 'product_details' 'gadgets' 'drone' %}">
+                        <img src="{% static 'videos/gadjet4.jpg'%}" alt="video3" class="img-fluid zoom-image1 w-100">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    <!--second slide-->
+    <div class="carousel-item ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4 cursor">
+                <h1 class="t11 text-black text-center" >Smart Watches</h1>
+                <div class="zoom-container1">
+                    <a href="{% url 'product_details' 'gadgets' 'embossed-metal-watch' %}">
+                    <img src="{% static 'videos/gadjet5.jpg'%}" alt="video4" class="img-fluid zoom-image1 w-100"> 
+                    </a>
+                </div>  
+            </div>
+            <div class="col-md-4 cursor">
+                <h1 class="t11 text-black text-center" >Vr World</h1>
+                <div class="zoom-container1">
+                    <a href="{% url 'product_details' 'gadgets' 'vision-pro' %}">
+                    <img src="{% static 'videos/gadjet6.jpg'%}" alt="video5" class="img-fluid zoom-image1 w-100">  
+                    </a> 
+                </div> 
+            </div>
+            <div class="col-md-4 cursor">
+                <h1 class="t11 text-black text-center" >Drones</h1>
+                <div class="zoom-container1">
+                    <a href="{% url 'product_details' 'gadgets' 'drone' %}">
+                    <img src="{% static 'videos/gadjet7.jpg'%}" alt="video6" class="img-fluid zoom-image1 w-100">  
+                    </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev btn btn-black" type="button" data-bs-target="#multiItemCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#multiItemCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+  
+        
+
+
+      <div class="container-fluid  mt-5">
+        <a class="row bg-secondary text-center anone" href="#top">
+            <div  class="col w-100 ">
+                <p class=" fs-4 text-white mb-2 mt-2 bold" >Back to Top</p>
+            </div>
+        </a>
+        <div class="row bg-black ">
+          <div class="col-3">
+              <div class=" t10 float-end mt-5 z1">
+                  <p class="fs-3 mb-5 bold">Get to know us</p>
+                  <p>About Flash</p>
+                  <p>careers</p>
+                  <p>Press releases</p>
+                  <p>Flash science</p>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class=" t10 text-center mt-5 z1">
+                  <p class="fs-3 mb-5 bold ">Connect with us</p>
+                  <p><i class="fa-brands fa-square-facebook" href="#"></i> Facebook</p>
+                  <p><i class="fa-brands fa-twitter"></i> Twitter</p>
+                  <p><i class="fa-brands fa-instagram"></i> Instagram</p>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class=" t10 mt-5 z1">
+                  <p class="fs-3 mb-5 bold ">Make Money with us</p>
+                  <p>Sell on flash</p>
+                  <p>Protect and build your brand</p>
+                  <p>Amazon global selling</p>
+                  <p>Supply to flash</p>
+                  <p>become on Affilate</p>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class=" t10 float-start mt-5 z1">
+                  <p class="fs-3 mb-5 bold">Let help you</p>
+                  <p>Your account</p>
+                  <p>Returns centre</p>
+                  <p>Recalls and product safety</p>
+                  <p>help</p>
+              </div>
+          </div>
+          <div class="row  mt-5 text-center  mb-5">
+            <a class="t1   logo1 " href="{% url 'home' %}" style="font-family: fantasy;">Flash<i class="fa-solid  fa-bolt  i1 t "></i></a>
+            <p class="t10 mt-2 bold">Copyrights@2025</p>
+          </div>
+         
+  
+      </div>
+      </div>
+</body>
+</html>
