@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-bdhrhoo8m=56-#2#&3c_-s(+(fszn51o^q1*vfz8)-_)-rgi9r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['onrender.com','localhost']
 
 
 # Application definition
@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'flash',
 ]
 
-CORS_ORGIN_ALLOW_ALL = False
-CORS_ORGIN_WHITELIST = ('http://localhost:8000')
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ('http://localhost:8000')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,6 +129,11 @@ USE_TZ = True
 
 import os
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 MEDIA_URL='/pics/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'flash/static')
